@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { AuthFacade } from './features/auth/auth.facade';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'org';
+export class AppComponent implements OnInit {
+  authFacade: AuthFacade = inject(AuthFacade);
+
+  ngOnInit() {
+    this.authFacade.performCachedLogin();
+  }
 }
