@@ -11,6 +11,8 @@ import { provideStore, StoreModule } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { authReducer } from './features/auth/auth.state';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PetEffects } from './features/pet/pet.effects';
+import { petReducer } from './features/pet/pet.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,10 +20,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideHttpClient(),
     provideStore(),
-    provideEffects(AuthEffects),
+    provideEffects(AuthEffects, PetEffects),
     importProvidersFrom(
       StoreModule.forRoot({
         auth: authReducer,
+        pet: petReducer,
       })
     ),
     provideAnimationsAsync(),
