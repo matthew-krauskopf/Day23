@@ -4,7 +4,12 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { loginSuccessful } from '../auth/auth.actions';
-import { loadPet, loadPetsFail, loadPetsSuccess } from './pet.actions';
+import {
+  deletePet,
+  loadPet,
+  loadPetsFail,
+  loadPetsSuccess,
+} from './pet.actions';
 import { Pet } from './pet.entity';
 import { PetService } from './pet.service';
 
@@ -48,6 +53,28 @@ export class PetEffects {
             duration: 5000,
           })
         )
+      ),
+    { dispatch: false }
+  );
+
+  deletePet$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(deletePet),
+        map(() =>
+          this.snackbar.open('Pet successfully deleted', 'Dismiss', {
+            duration: 5000,
+          })
+        )
+      ),
+    { dispatch: false }
+  );
+
+  routeToPetList$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(deletePet),
+        tap(() => this.router.navigate(['dashboard', 'pets']))
       ),
     { dispatch: false }
   );

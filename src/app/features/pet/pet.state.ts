@@ -1,12 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
+import { logout } from '../auth/auth.actions';
 import {
   loadPet,
   loadPets,
   loadPetsFail,
   loadPetsSuccess,
+  deletePet,
 } from './pet.actions';
 import { Pet } from './pet.entity';
-import { logout } from '../auth/auth.actions';
+import { deletePetUtil } from './pet.utils';
 
 export interface PetState {
   pets: Pet[];
@@ -33,7 +35,7 @@ export const petReducer = createReducer(
   })),
   on(loadPets, (state) => ({
     ...state,
-    isLoading: true,
+    isLoading: state.pets.length == 0,
   })),
   on(loadPetsSuccess, (state, { pets }) => ({
     ...state,
@@ -47,5 +49,9 @@ export const petReducer = createReducer(
   on(logout, (state) => ({
     ...state,
     pets: [],
+  })),
+  on(deletePet, (state, { id }) => ({
+    ...state,
+    pets: deletePetUtil(state.pets, id),
   }))
 );

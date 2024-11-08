@@ -15,4 +15,9 @@ export const loadPetsSuccess = createAction(
 
 export const loadPetsFail = createAction('[Background] Load Pets Fail');
 
+export const deletePet = createAction(
+  '[Pet Detail] Delete Pet',
+  props<{ id: number }>()
+);
+
 export const unloadPets = createAction('[Logout] Unload Pets');

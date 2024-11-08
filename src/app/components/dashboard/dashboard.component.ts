@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { PetFacade } from 'src/app/features/pet/pet.facade';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 
 @Component({
@@ -11,5 +12,9 @@ import { TopBarComponent } from '../top-bar/top-bar.component';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
-  ngOnInit(): void {}
+  petFacade = inject(PetFacade);
+
+  ngOnInit(): void {
+    this.petFacade.loadPets();
+  }
 }

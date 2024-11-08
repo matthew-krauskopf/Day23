@@ -2,7 +2,10 @@
   width: 400px;
 }
 
-.mat-mdc-unelevated-button:not(:disabled) {
-  background-color: #1707f7;
-  color: #fff;
+.mat-mdc-unelevated-button:not(:disabled){
+  background-color: #6504B5
+}
+
+.mat-mdc-progress-spinner { 
+  --mdc-circular-progress-active-indicator-color: #6504B5;
 }

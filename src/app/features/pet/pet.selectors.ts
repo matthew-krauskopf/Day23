@@ -10,7 +10,7 @@ export const selectedPetId = createSelector(
 );
 
 export const selectPets = createSelector(selectPetState, (petState) =>
-  mapPhotos(petState.pets)
+  mapPhotos(petState.pets.filter((p) => !p.deleted))
 );
 
 export const selectedPet = createSelector(

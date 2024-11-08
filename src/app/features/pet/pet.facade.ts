@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadPet, loadPets } from './pet.actions';
+import { deletePet, loadPet, loadPets } from './pet.actions';
 import { isProcessing, selectedPet, selectPets } from './pet.selectors';
 
 @Injectable({
@@ -24,5 +24,9 @@ export class PetFacade {
 
   loadPets() {
     this.store.dispatch(loadPets());
+  }
+
+  deletePet(id: number) {
+    this.store.dispatch(deletePet({ id }));
   }
 }

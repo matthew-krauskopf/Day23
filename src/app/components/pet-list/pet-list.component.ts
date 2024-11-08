@@ -10,10 +10,6 @@ import { PetFacade } from 'src/app/features/pet/pet.facade';
   templateUrl: './pet-list.component.html',
   styleUrl: './pet-list.component.scss',
 })
-export class PetListComponent implements OnInit {
+export class PetListComponent {
   petFacade = inject(PetFacade);
-
-  ngOnInit(): void {
-    this.petFacade.loadPets();
-  }
 }

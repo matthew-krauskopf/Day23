@@ -1,6 +1,9 @@
 @if (petFacade.selectedPet$ | async; as pet) {
 <div>
   {{ pet.name }}
+  <button mat-flat-button (click)="petFacade.deletePet(pet.id)">
+    Delete Pet
+  </button>
 </div>
 } @else {
 <span>No pet found</span>
