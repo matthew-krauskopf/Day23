@@ -1,3 +1,13 @@
-.mat-mdc-unelevated-button:not(:disabled){
-  background-color: red;
+.update {
+  --mdc-filled-button-container-color: #6504B5;
+}
+
+.delete {
+  --mdc-filled-button-container-color: red;
+}
+
+.pic {
+  width: 600px;
+  //height: 400px;
+  overflow: hidden;
 }

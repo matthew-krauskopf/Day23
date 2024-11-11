@@ -1,10 +1,57 @@
-@if (petFacade.selectedPet$ | async; as pet) {
-<div>
-  {{ pet.name }}
-  <button mat-flat-button (click)="petFacade.deletePet(pet.id)">
-    Delete Pet
-  </button>
+<div class="w-full h-full p-7">
+  <div class="border rounded-lg bg-white card">
+    @if (petFacade.selectedPet$ | async; as pet) {
+    <div>
+      <div class="flex flex-row overflow-hidden">
+        <img class="pic rounded-l-md flex-0" src="{{ pet.photo }}" />
+        <div class="flex flex-col flex-1 p-3">
+          <div>
+            <div class="flex justify-end">
+              <button class="ml-3 update" mat-flat-button (click)="updatePet()">
+                Update
+              </button>
+              <button
+                class="ml-3 delete"
+                mat-flat-button
+                (click)="petFacade.deletePet(pet.id)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+          <div class="my-5">
+            <span class="font-bold text-3xl">{{ pet.name }}</span>
+          </div>
+          <form [formGroup]="form">
+            <div class="flex flex-col">
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" />
+                @if(form.controls['name'].errors; as error) {
+                <mat-error>Name is required</mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Age</mat-label>
+                <input min="0" type="number" matInput formControlName="age" />
+                @if(form.controls['age'].errors; as error) {
+                <mat-error>Age must be >= 0</mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Species</mat-label>
+                <input matInput formControlName="species" />
+                @if(form.controls['species'].errors; as error) {
+                <mat-error>Species is required</mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    } @else {
+    <span>No pet found</span>
+    }
+  </div>
 </div>
-} @else {
-<span>No pet found</span>
-}

@@ -7,6 +7,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @tailwind components;
 @tailwind utilities;
 
+$purple-color: #6504B5;
+
 @mixin generate-spacing ($upper-limit) {
   @for $i from 1 to $upper-limit {
       .pad-left-#{$i} {

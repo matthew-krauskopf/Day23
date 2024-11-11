@@ -6,10 +6,10 @@
   } @else { @for(pet of petFacade.pets$ | async; track pet.id) {
   <div
     (click)="petFacade.loadPet(pet.id)"
-    class="bg-white ml-6 my-6 card rounded-lg border flex flex-col cursor-pointer"
+    class="bg-white ml-6 my-6 card rounded-lg border flex flex-col cursor-pointer overflow-hidden"
   >
     <div>
-      <img class="pic rounded-t-lg" src="{{ pet.photo }}" />
+      <img class="pic" src="{{ pet.photo }}" />
     </div>
     <div class="px-5 py-3">
       <span class="font-bold text-xl">{{ pet.name | titlecase }}</span>

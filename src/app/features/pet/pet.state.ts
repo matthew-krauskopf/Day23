@@ -6,9 +6,10 @@ import {
   loadPetsFail,
   loadPetsSuccess,
   deletePet,
+  updatePet,
 } from './pet.actions';
 import { Pet } from './pet.entity';
-import { deletePetUtil } from './pet.utils';
+import { deletePetUtil, updatePetUtil } from './pet.utils';
 
 export interface PetState {
   pets: Pet[];
@@ -53,5 +54,9 @@ export const petReducer = createReducer(
   on(deletePet, (state, { id }) => ({
     ...state,
     pets: deletePetUtil(state.pets, id),
+  })),
+  on(updatePet, (state, { name, age, species }) => ({
+    ...state,
+    pets: updatePetUtil(state.pets, state.selectedPet, name, age, species),
   }))
 );

@@ -21,3 +21,8 @@ export const deletePet = createAction(
 );
 
 export const unloadPets = createAction('[Logout] Unload Pets');
+
+export const updatePet = createAction(
+  '[Pet Details] Update Pet',
+  props<{ name: string; age: number; species: string }>()
+);

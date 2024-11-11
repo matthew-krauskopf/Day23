@@ -9,6 +9,7 @@ import {
   loadPet,
   loadPetsFail,
   loadPetsSuccess,
+  updatePet,
 } from './pet.actions';
 import { Pet } from './pet.entity';
 import { PetService } from './pet.service';
@@ -57,6 +58,19 @@ export class PetEffects {
     { dispatch: false }
   );
 
+  updatePet$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updatePet),
+        map(() =>
+          this.snackbar.open('Pet successfully updated', 'Dismiss', {
+            duration: 5000,
+          })
+        )
+      ),
+    { dispatch: false }
+  );
+
   deletePet$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -73,7 +87,7 @@ export class PetEffects {
   routeToPetList$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(deletePet),
+        ofType(deletePet, updatePet),
         tap(() => this.router.navigate(['dashboard', 'pets']))
       ),
     { dispatch: false }
