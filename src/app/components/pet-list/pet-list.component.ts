@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PetFacade } from 'src/app/features/pet/pet.facade';
 
 @Component({
   selector: 'app-pet-list',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule, MatButtonModule],
   templateUrl: './pet-list.component.html',
   styleUrl: './pet-list.component.scss',
 })

@@ -54,10 +54,12 @@ export class PetDetailComponent implements OnInit {
   }
 
   updatePet() {
-    this.petFacade.updatePet(
-      this.form.value['name'] ?? '',
-      this.form.value['age'] ?? 0,
-      this.form.value['species'] ?? ''
-    );
+    if (this.form.valid) {
+      this.petFacade.updatePet(
+        this.form.value['name'] ?? '',
+        this.form.value['age'] ?? 0,
+        this.form.value['species'] ?? ''
+      );
+    }
   }
 }

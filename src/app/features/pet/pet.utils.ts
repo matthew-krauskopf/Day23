@@ -1,8 +1,22 @@
 import { Pet } from './pet.entity';
 
+export function addPetUtil(pets: Pet[]) {
+  const newPet: Pet = {
+    id:
+      pets.map((p) => p.id).reduce((max, a) => (max = a > max ? a : max), 0) +
+      1,
+    name: 'New Pet',
+    age: 0,
+    type: 'unknown',
+    inMemory: true,
+  };
+
+  return [...pets, newPet];
+}
+
 export function mapPhotos(pets: Pet[]) {
   return pets.map((p) => {
-    return { ...p, photo: `${p.id}.jpg` };
+    return { ...p, photo: p.inMemory ? 'default.jpg' : `${p.id}.jpg` };
   });
 }
 
@@ -19,8 +33,6 @@ export function updatePetUtil(
   age: number,
   species: string
 ): Pet[] {
-  console.log('Updating ' + id);
-
   if (!id) return pets;
 
   const toUpdate = pets.find((p) => p.id == id);

@@ -9,5 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './not-found.component.scss',
 })
 export class NotFoundComponent {
-  img = '404.jpg';
+  img = '404_notfound.jpg';
 }

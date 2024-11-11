@@ -6,4 +6,5 @@ export interface Pet {
 
   deleted?: boolean;
   photo?: string;
+  inMemory?: boolean;
 }

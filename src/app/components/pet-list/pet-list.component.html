@@ -1,23 +1,38 @@
-<div class="w-full h-full flex flex-wrap overflow-y-auto">
+<div class="w-full h-full">
   @if((petFacade.isProcessing$ | async)) {
   <div class="w-full h-full flex items-center justify-center">
     <mat-spinner></mat-spinner>
   </div>
-  } @else { @for(pet of petFacade.pets$ | async; track pet.id) {
-  <div
-    (click)="petFacade.loadPet(pet.id)"
-    class="bg-white ml-6 my-6 card rounded-lg border flex flex-col cursor-pointer overflow-hidden"
-  >
-    <div>
-      <img class="pic" src="{{ pet.photo }}" />
+  } @else {
+  <div class="flex flex-col h-full">
+    <div class="pt-3 pb-3 pl-6 bg-toolbar border-b">
+      <button class="add" mat-flat-button (click)="petFacade.addPet()">
+        Add Pet
+      </button>
     </div>
-    <div class="px-5 py-3">
-      <span class="font-bold text-xl">{{ pet.name | titlecase }}</span>
-    </div>
-    <div class="px-5 flex flex-row">
-      <span>Age: {{ pet.age }}</span>
-      <span class="mx-3">Type: {{ pet.type | titlecase }} </span>
+    <div class="w-full h-full flex flex-wrap overflow-y-auto">
+      @for(pet of petFacade.pets$ | async; track pet.id) {
+      <div
+        (click)="petFacade.loadPet(pet.id)"
+        class="bg-white ml-6 my-3 card rounded-lg border flex flex-col cursor-pointer overflow-hidden"
+      >
+        <div>
+          <img class="pic" src="{{ pet.photo }}" />
+        </div>
+        <div class="px-5 py-3">
+          <span class="font-bold text-xl">{{ pet.name | titlecase }}</span>
+        </div>
+        <div class="px-5 flex flex-row">
+          <span>Age: {{ pet.age }}</span>
+          <span class="mx-3">Type: {{ pet.type | titlecase }} </span>
+        </div>
+      </div>
+      } @if(!(petFacade.petCount$ | async); as petCount) {
+      <div class="w-full h-full flex justify-center items-center">
+        <span class="text-white text-2xl">No pets found</span>
+      </div>
+      }
     </div>
   </div>
-  } }
+  }
 </div>

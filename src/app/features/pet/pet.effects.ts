@@ -5,6 +5,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { loginSuccessful } from '../auth/auth.actions';
 import {
+  addPet,
   deletePet,
   loadPet,
   loadPetsFail,
@@ -51,6 +52,19 @@ export class PetEffects {
         ofType(loadPetsFail),
         map(() =>
           this.snackbar.open('Network Error: Pets failed to load', 'Dismiss', {
+            duration: 5000,
+          })
+        )
+      ),
+    { dispatch: false }
+  );
+
+  addPet$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addPet),
+        map(() =>
+          this.snackbar.open('Pet successfully created', 'Dismiss', {
             duration: 5000,
           })
         )

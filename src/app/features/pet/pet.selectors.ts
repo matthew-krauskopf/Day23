@@ -13,6 +13,11 @@ export const selectPets = createSelector(selectPetState, (petState) =>
   mapPhotos(petState.pets.filter((p) => !p.deleted)).sort((a, b) => a.id - b.id)
 );
 
+export const petCount = createSelector(
+  selectPetState,
+  (state) => state.pets.filter((p) => !p.deleted).length
+);
+
 export const selectedPet = createSelector(
   selectedPetId,
   selectPets,

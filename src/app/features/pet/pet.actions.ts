@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { Pet } from './pet.entity';
 
+export const addPet = createAction('[Pet List] Add Pet');
+
 export const loadPet = createAction(
   '[Pet List] Load Pet',
   props<{ id: number }>()
