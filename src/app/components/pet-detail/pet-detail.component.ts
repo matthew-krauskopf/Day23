@@ -11,8 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
+import { PetFacade } from '@org/pet-lib';
 import { filter, take, tap } from 'rxjs';
-import { PetFacade } from 'src/app/features/pet/pet.facade';
 
 @Component({
   selector: 'app-pet-detail',
@@ -30,6 +30,7 @@ import { PetFacade } from 'src/app/features/pet/pet.facade';
 })
 export class PetDetailComponent implements OnInit {
   petFacade = inject(PetFacade);
+
   route = inject(ActivatedRoute);
 
   formHydrator = this.petFacade.selectedPet$.pipe(

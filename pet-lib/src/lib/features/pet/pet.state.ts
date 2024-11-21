@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { logout } from '../auth/auth.actions';
+import { logout } from '@org/auth-lib';
 import {
   addPet,
   deletePet,

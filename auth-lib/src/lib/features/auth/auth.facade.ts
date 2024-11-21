@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { login, logout, relogin } from './auth.actions';
-import {
-  isProcessing,
-  selectAuthState,
-  selectAuthUserId,
-} from './auth.selectors';
+import { isProcessing, selectAuthUserId } from './auth.selectors';
 
 @Injectable({
   providedIn: 'root',

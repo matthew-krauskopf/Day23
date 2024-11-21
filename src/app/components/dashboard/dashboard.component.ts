@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { PetFacade } from 'src/app/features/pet/pet.facade';
+import { PetFacade } from '@org/pet-lib';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 
 @Component({

@@ -9,7 +9,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AuthFacade } from '../../features/auth/auth.facade';
+import { AuthFacade } from '@org/auth-lib';
 import { CommonModule, NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 

@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
-import { loginSuccessful } from '../auth/auth.actions';
+import { loginSuccessful } from '@org/auth-lib';
 import {
   addPet,
   deletePet,
