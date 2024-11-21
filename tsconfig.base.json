@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/auth-lib": ["auth-lib/src/index.ts"]
+      "@org/auth-lib": ["auth-lib/src/index.ts"],
+      "@org/pet-lib": ["pet-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

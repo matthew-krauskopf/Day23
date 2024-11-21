@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
 import { filter, take, tap } from 'rxjs';
-import { PetFacade } from 'src/app/features/pet/pet.facade';
+import { PetFacade } from '@org/pet-lib';
 
 @Component({
   selector: 'app-pet-detail',

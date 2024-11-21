@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PetFacade } from 'src/app/features/pet/pet.facade';
+import { PetFacade } from '@org/pet-lib';
 
 @Component({
   selector: 'app-pet-list',

@@ -1,0 +1,47 @@
+{
+  "name": "pet-lib",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "pet-lib/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "pet-lib/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "pet-lib/src/index.ts",
+        "outputPath": "dist/pet-lib",
+        "outputFileName": "main.js",
+        "tsConfig": "pet-lib/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "pet-lib/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ],
+        "platform": "node"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
+    }
+  }
+}
