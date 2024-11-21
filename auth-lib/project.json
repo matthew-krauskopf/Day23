@@ -15,6 +15,33 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "auth-lib/src/index.ts",
+        "outputPath": "dist/auth-lib",
+        "outputFileName": "main.js",
+        "tsConfig": "auth-lib/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "auth-lib/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ],
+        "platform": "node"
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": true
+        }
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthFacade } from './features/auth/auth.facade';
+import { AuthFacade } from '@org/auth-lib';
 
 @Component({
   standalone: true,
